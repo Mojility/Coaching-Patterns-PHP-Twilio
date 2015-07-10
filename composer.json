@@ -1,0 +1,15 @@
+{
+  "name": "svetzal/twilio-phonesystem",
+  "description": "A simple small business phone system using the Twilio API",
+  "minimum-stability": "beta",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stacey Vetzal",
+      "email": "stacey@vetzal.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "4.7.2"
+  }
+}
