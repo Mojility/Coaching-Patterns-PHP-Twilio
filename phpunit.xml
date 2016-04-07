@@ -1,2 +1,7 @@
 <phpunit bootstrap="autoload.php">
+    <testsuites>
+        <testsuite name="Main">
+            <directory>specgit </directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
