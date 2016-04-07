@@ -1,7 +1,6 @@
 <?php
 
-require_once("inc/Group.class.php");
-require_once("inc/modes/OutputModeSelector.class.php");
+use Modes\OutputModeSelector;
 
 class IntegrationTest extends PHPUnit_Framework_TestCase {
 
@@ -12,29 +11,29 @@ class IntegrationTest extends PHPUnit_Framework_TestCase {
     }
 
     function testGeneratesRejectOutputForRejectMode() {
-        $output = $this->getOutputFor(new Group(REJECT_MODE), MEMBER_PHONE, null);
+        $output = $this->getOutputFor(new Group(Group::REJECT_MODE), Group::MEMBER_PHONE, null);
         $this->assertContains("Reject", $output);
     }
 
     function testGeneratesForwardToAdministrators() {
-        $output = $this->getOutputFor(new Group(FORWARD_MODE), MEMBER_PHONE, null);
+        $output = $this->getOutputFor(new Group(Group::FORWARD_MODE), Group::MEMBER_PHONE, null);
         $this->assertContains("Dial", $output);
-        $this->assertContains(ADMIN_PHONE, $output);
-        $this->assertContains(ADMIN2_PHONE, $output);
+        $this->assertContains(Group::ADMIN_PHONE, $output);
+        $this->assertContains(Group::ADMIN2_PHONE, $output);
     }
 
     function testGeneratesRequestDigitsForBridging() {
-        $output = $this->getOutputFor(new Group(FORWARD_MODE), ADMIN_PHONE, null);
+        $output = $this->getOutputFor(new Group(Group::FORWARD_MODE), Group::ADMIN_PHONE, null);
         $this->assertContains("Gather", $output);
     }
 
     function testGeneratesInvalidResponseForBadBridgeNumber() {
-        $output = $this->getOutputFor(new Group(FORWARD_MODE), ADMIN_PHONE, "123");
+        $output = $this->getOutputFor(new Group(Group::FORWARD_MODE), Group::ADMIN_PHONE, "123");
         $this->assertContains("Redirect", $output);
     }
 
     function testGeneratesCallForValidBridgeNumber() {
-        $output = $this->getOutputFor(new Group(FORWARD_MODE), ADMIN_PHONE, "1234567890");
+        $output = $this->getOutputFor(new Group(Group::FORWARD_MODE), Group::ADMIN_PHONE, "1234567890");
         $this->assertContains("Dial", $output);
         $this->assertContains("1234567890", $output);
     }

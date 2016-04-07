@@ -1,6 +1,8 @@
 <?php
 
-require_once("inc/twilio/ResponseWriter.class.php");
+namespace Modes;
+
+use Twilio\ResponseWriter;
 
 abstract class OutputBuilder {
 

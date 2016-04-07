@@ -1,5 +1,10 @@
 <?php
 
+namespace Twilio;
+
+use Settings;
+use SimpleXMLElement;
+
 class ResponseWriter {
 
     private $response;
@@ -9,20 +14,20 @@ class ResponseWriter {
     }
 
     function outputGatherDigitsResponse() {
-        $child = $this->addChildWithAttributes("Gather", array("action" => SCRIPT_URL, "timeout" => 2));
+        $child = $this->addChildWithAttributes("Gather", array("action" => Settings::SCRIPT_URL, "timeout" => 2));
         $child->addChild("Say", "Enter outgoing number.");
 
         $this->addChildWithAttributeTo($child, "Pause", "length", 8);
 
         $this->response->addChild("Say", "Sorry, I didn't get your input.");
-        $this->response->addChild("Redirect", SCRIPT_URL);
+        $this->response->addChild("Redirect", Settings::SCRIPT_URL);
 
         return $this->response->asXML();
     }
 
     function outputInvalidDigitsResponse() {
         $this->response->addChild("Say", "You must provide a valid 10-digit phone number to dial");
-        $this->response->addChild("Redirect", SCRIPT_URL);
+        $this->response->addChild("Redirect", Settings::SCRIPT_URL);
         return $this->response->asXML();
     }
 

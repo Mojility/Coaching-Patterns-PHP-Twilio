@@ -1,9 +1,9 @@
 <?php
 
-require_once("spec/modes/forward/output_builders/OutputBuilderTestBase.php");
+namespace Modes\Forward\OutputBuilders;
 
-require_once("inc/Group.class.php");
-require_once("inc/modes/forward/output_builders/InvalidDigitsOutputBuilder.class.php");
+use Group;
+use Modes\Forward\OutputBuilders\InvalidDigitsOutputBuilder;
 
 class InvalidDigitsOutputBuilderTest extends OutputBuilderTestBase {
 
@@ -13,15 +13,15 @@ class InvalidDigitsOutputBuilderTest extends OutputBuilderTestBase {
     }
 
     function testWontHandleFromNonAdministrators() {
-        $this->assertFalse($this->checkCanHandle(MEMBER_PHONE, null));
+        $this->assertFalse($this->checkCanHandle(Group::MEMBER_PHONE, null));
     }
 
     function testWontHandleWithValidDigits() {
-        $this->assertFalse($this->checkCanHandle(ADMIN_PHONE, "1234567890"));
+        $this->assertFalse($this->checkCanHandle(Group::ADMIN_PHONE, "1234567890"));
     }
 
     function testReturnsExpectedResults() {
-        $output = $this->getHandleOutput(MEMBER_PHONE, null);
+        $output = $this->getHandleOutput(Group::MEMBER_PHONE, null);
         $this->assertContains("Response", $output);
         $this->assertContains("Redirect", $output);
     }

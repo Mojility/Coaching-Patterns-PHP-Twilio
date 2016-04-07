@@ -1,11 +1,14 @@
 <?php
 
-include_once("inc/modes/OutputBuilder.class.php");
+namespace Modes\Reject;
+
+use Group;
+use Modes\OutputBuilder;
 
 class RejectCallOutputBuilder extends OutputBuilder {
 
     public function canHandle($groupMode) {
-        return $groupMode == REJECT_MODE;
+        return $groupMode == Group::REJECT_MODE;
     }
 
     public function buildOutput($group, $from, $digits = null) {

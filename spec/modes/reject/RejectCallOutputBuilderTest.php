@@ -1,6 +1,6 @@
 <?php
 
-require_once("inc/modes/reject/RejectCallOutputBuilder.class.php");
+use Modes\Reject\RejectCallOutputBuilder;
 
 class RejectCallOutputBuilderTest extends PHPUnit_Framework_TestCase {
 
@@ -11,12 +11,12 @@ class RejectCallOutputBuilderTest extends PHPUnit_Framework_TestCase {
     }
 
     function testRespondsOnlyToCorrectMode() {
-        $this->assertTrue($this->builder->canHandle(REJECT_MODE));
-        $this->assertFalse($this->builder->canHandle(FORWARD_MODE));
+        $this->assertTrue($this->builder->canHandle(Group::REJECT_MODE));
+        $this->assertFalse($this->builder->canHandle(Group::FORWARD_MODE));
     }
 
     function testReturnsExpectedResults() {
-        $output = $this->builder->buildOutput(new Group(REJECT_MODE), ADMIN_PHONE, null);
+        $output = $this->builder->buildOutput(new Group(Group::REJECT_MODE), Group::ADMIN_PHONE, null);
         $this->assertContains("Response", $output);
         $this->assertContains("Reject", $output);
     }

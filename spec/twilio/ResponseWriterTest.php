@@ -1,8 +1,8 @@
 <?php
 
-require_once("inc/twilio/ResponseWriter.class.php");
+namespace Twilio;
 
-class ResponseWriterTest extends PHPUnit_Framework_TestCase {
+class ResponseWriterTest extends \PHPUnit_Framework_TestCase {
 
     protected $responseWriter = null;
 

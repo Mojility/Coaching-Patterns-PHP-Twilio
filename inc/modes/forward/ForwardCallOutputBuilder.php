@@ -1,11 +1,13 @@
 <?php
 
-include_once("inc/modes/forward/ForwardContextRecognizer.class.php");
+namespace Modes\Forward;
+
+use Group;
 
 class ForwardCallOutputBuilder {
 
     public function canHandle($groupMode) {
-        return $groupMode == FORWARD_MODE;
+        return $groupMode == Group::FORWARD_MODE;
     }
 
     public function buildOutput($group, $from, $digits = null) {

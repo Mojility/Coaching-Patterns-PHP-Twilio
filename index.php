@@ -1,11 +1,15 @@
 <?php
-require_once("inc/Group.class.php");
-require_once("inc/modes/OutputModeSelector.class.php");
 
-define("SCRIPT_URL", "http://myserver.com/phones/index.php");
+spl_autoload_register(function($className) {
+    $filename = "inc"
+        . DIRECTORY_SEPARATOR
+        . join(DIRECTORY_SEPARATOR, explode('\\', $className))
+        . ".php";
+    include($filename);
+});
 
 //$from = $_POST['From'];
-//$from = ADMIN_PHONE;
+$from = Group::ADMIN_PHONE;
 //$from = "+17055551212";
 //$from = $argv[1];
 
@@ -13,10 +17,11 @@ define("SCRIPT_URL", "http://myserver.com/phones/index.php");
 //$digits = "6135551212";
 //$digits = "48424";
 //$digits = $argv[2];
+$digits = null;
 
-$group = new Group(FORWARD_MODE);
+$group = new Group(Group::FORWARD_MODE);
 
-$selector = new OutputModeSelector();
+$selector = new Modes\OutputModeSelector();
 $outputBuilder = $selector->builderFor($group->getMode());
 $output = $outputBuilder->buildOutput($group, $from, $digits);
 

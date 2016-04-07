@@ -1,7 +1,5 @@
 <?php
 
-require_once("inc/Group.class.php");
-
 class GroupTest extends PHPUnit_Framework_TestCase {
 
     protected $group = null;
@@ -11,7 +9,7 @@ class GroupTest extends PHPUnit_Framework_TestCase {
     }
 
     function testGroupHasAdministrator() {
-        $this->assertTrue($this->group->isAdministrator(ADMIN_PHONE));
+        $this->assertTrue($this->group->isAdministrator(Group::ADMIN_PHONE));
     }
 
 }

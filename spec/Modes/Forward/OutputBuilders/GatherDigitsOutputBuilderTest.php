@@ -1,9 +1,9 @@
 <?php
 
-require_once("spec/modes/forward/output_builders/OutputBuilderTestBase.php");
+namespace Modes\Forward\OutputBuilders;
 
-require_once("inc/Group.class.php");
-require_once("inc/modes/forward/output_builders/GatherDigitsOutputBuilder.class.php");
+use Group;
+use Modes\Forward\OutputBuilders\GatherDigitsOutputBuilder;
 
 class GatherDigitsOutputBuilderTest extends OutputBuilderTestBase {
 
@@ -13,15 +13,15 @@ class GatherDigitsOutputBuilderTest extends OutputBuilderTestBase {
     }
 
     function testWontHandleFromNonAdministrators() {
-        $this->assertFalse($this->checkCanHandle(MEMBER_PHONE, null));
+        $this->assertFalse($this->checkCanHandle(Group::MEMBER_PHONE, null));
     }
 
     function testWontHandleForDigitsPresent() {
-        $this->assertFalse($this->checkCanHandle(MEMBER_PHONE, "123"));
+        $this->assertFalse($this->checkCanHandle(Group::MEMBER_PHONE, "123"));
     }
 
     function testReturnsExpectedResults() {
-        $output = $this->getHandleOutput(MEMBER_PHONE, null);
+        $output = $this->getHandleOutput(Group::MEMBER_PHONE, null);
         $this->assertContains("Response", $output);
         $this->assertContains("Gather", $output);
     }

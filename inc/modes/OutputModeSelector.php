@@ -1,9 +1,10 @@
 <?php
 
-require_once("inc/modes/forward/ForwardCallOutputBuilder.class.php");
-require_once("inc/modes/reject/RejectCallOutputBuilder.class.php");
+namespace Modes;
 
-class NoBuilderFoundException extends Exception {}
+use \Modes\Forward\ForwardCallOutputBuilder;
+use \Modes\NoBuilderFoundException;
+use \Modes\Reject\RejectCallOutputBuilder;
 
 class OutputModeSelector {
 

@@ -1,5 +1,5 @@
 <?php
-require_once("inc/Group.class.php");
+require_once("inc/Group.php");
 
 define("SCRIPT_URL", "http://myserver.com/phones/index.php");
 

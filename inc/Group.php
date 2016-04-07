@@ -1,16 +1,16 @@
 <?php
 
-define("FORWARD_MODE", "forward");
-define("REJECT_MODE", "reject_busy");
-define("ADMIN_PHONE", "+19055551212");
-define("ADMIN2_PHONE", "+14165551212");
-define("MEMBER_PHONE", "+17055551212");
-
 class Group {
+
+    const FORWARD_MODE = "forward";
+    const REJECT_MODE = "reject_busy";
+    const ADMIN_PHONE = "+19055551212";
+    const ADMIN2_PHONE = "+14165551212";
+    const MEMBER_PHONE = "+17055551212";
 
     protected $mode = null;
 
-    public function __construct($mode = REJECT_MODE) {
+    public function __construct($mode = Group::REJECT_MODE) {
         $this->mode = $mode;
     }
 
@@ -23,7 +23,7 @@ class Group {
     }
 
     public function getAdministrators() {
-        return array(ADMIN_PHONE, ADMIN2_PHONE);
+        return array(Group::ADMIN_PHONE, Group::ADMIN2_PHONE);
     }
 
 }

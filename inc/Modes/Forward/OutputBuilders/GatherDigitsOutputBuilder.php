@@ -1,6 +1,8 @@
 <?php
 
-include_once("inc/modes/OutputBuilder.class.php");
+namespace Modes\Forward\OutputBuilders;
+
+use Modes\OutputBuilder;
 
 class GatherDigitsOutputBuilder extends OutputBuilder {
 
