@@ -21,7 +21,7 @@ class ForwardToAdministratorsOutputBuilderTest extends OutputBuilderTestBase {
     }
 
     function testReturnsExpectedResults() {
-        $output = $this->builder->handle($this->group, Group::MEMBER_PHONE, null);
+        $output = $this->builder->buildOutput($this->group, Group::MEMBER_PHONE, null);
         $this->assertContains("Response", $output);
         $this->assertContains("Dial", $output);
         $this->assertContains(Group::ADMIN_PHONE, $output);

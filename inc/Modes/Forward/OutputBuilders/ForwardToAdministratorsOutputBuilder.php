@@ -10,7 +10,7 @@ class ForwardToAdministratorsOutputBuilder extends OutputBuilder {
         return !$group->isAdministrator($from);
     }
 
-    public function handle($group, $from, $digits) {
+    public function buildOutput($group, $from, $digits = null) {
         return $this->responseWriter->outputForwardCallResponse($group);
     }
 

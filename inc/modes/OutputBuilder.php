@@ -12,4 +12,6 @@ abstract class OutputBuilder {
         $this->responseWriter = new ResponseWriter();
     }
 
+    public abstract function buildOutput($group, $from, $digits = null);
+
 }

@@ -12,7 +12,7 @@ class DialOutgoingCallOutputBuilder extends OutputBuilder {
             && (10 == strlen($digits));
     }
 
-    public function handle($group, $from, $digits) {
+    public function buildOutput($group, $from, $digits = null) {
         return $this->responseWriter->outputOutgoingCallResponse($group, $digits);
     }
 

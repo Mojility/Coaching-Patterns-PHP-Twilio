@@ -12,7 +12,7 @@ class GatherDigitsOutputBuilder extends OutputBuilder {
             && !$digits;
     }
 
-    public function handle($group, $from, $digits) {
+    public function buildOutput($group, $from, $digits = null) {
         return $this->responseWriter->outputGatherDigitsResponse();
     }
 

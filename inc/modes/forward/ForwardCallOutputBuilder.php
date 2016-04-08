@@ -13,7 +13,7 @@ class ForwardCallOutputBuilder {
     public function buildOutput($group, $from, $digits = null) {
         $recognizer = new ForwardContextRecognizer();
         $builder = $recognizer->getOutputBuilderFor($group, $from, $digits);
-        return $builder->handle($group, $from, $digits);
+        return $builder->buildOutput($group, $from, $digits);
     }
 
 }

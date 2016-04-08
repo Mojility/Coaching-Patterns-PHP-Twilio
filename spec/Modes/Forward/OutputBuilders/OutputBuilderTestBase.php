@@ -17,6 +17,6 @@ class OutputBuilderTestBase extends \PHPUnit_Framework_TestCase {
     }
 
     function getHandleOutput($from, $digits) {
-        return $this->builder->handle($this->group, $from, $digits);
+        return $this->builder->buildOutput($this->group, $from, $digits);
     }
 }
