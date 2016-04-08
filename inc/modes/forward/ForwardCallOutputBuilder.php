@@ -3,8 +3,9 @@
 namespace Modes\Forward;
 
 use Group;
+use Modes\OutputBuilder;
 
-class ForwardCallOutputBuilder {
+class ForwardCallOutputBuilder extends OutputBuilder {
 
     public function canHandle($groupMode) {
         return $groupMode == Group::FORWARD_MODE;
