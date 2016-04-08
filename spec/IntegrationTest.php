@@ -1,13 +1,13 @@
 <?php
 
-use Modes\OutputModeSelector;
+use Twilio\ResponseWriter;
 
 class IntegrationTest extends PHPUnit_Framework_TestCase {
 
-    private $selector;
+    private $dispatcher;
 
     function setUp() {
-        $this->selector = new OutputModeSelector();
+        $this->dispatcher = new Dispatcher(new ResponseWriter());
     }
 
     function testGeneratesRejectOutputForRejectMode() {
@@ -39,8 +39,7 @@ class IntegrationTest extends PHPUnit_Framework_TestCase {
     }
 
     private function getOutputFor($group, $from, $digits) {
-        $outputBuilder = $this->selector->builderFor($group->getMode());
-        $output = $outputBuilder->buildOutput($group, $from, $digits);
+        $output = $this->dispatcher->invoke($group, $from, $digits);
         return $output;
     }
 

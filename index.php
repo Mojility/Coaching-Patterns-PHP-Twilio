@@ -1,5 +1,7 @@
 <?php
 
+use Twilio\ResponseWriter;
+
 spl_autoload_register(function($className) {
     $filename = "inc"
         . DIRECTORY_SEPARATOR
@@ -9,8 +11,8 @@ spl_autoload_register(function($className) {
 });
 
 //$from = $_POST['From'];
-$from = Group::ADMIN_PHONE;
-//$from = "+17055551212";
+//$from = Group::ADMIN_PHONE;
+$from = "+17055551212";
 //$from = $argv[1];
 
 //$digits = $_POST['Digits'];
@@ -19,10 +21,7 @@ $from = Group::ADMIN_PHONE;
 //$digits = $argv[2];
 $digits = null;
 
-$group = new Group(Group::FORWARD_MODE);
-
-$selector = new Modes\OutputModeSelector();
-$outputBuilder = $selector->builderFor($group->getMode());
-$output = $outputBuilder->buildOutput($group, $from, $digits);
-
-echo $output;
+$group = new Group();
+$responseWriter = new ResponseWriter();
+$dispatcher = new Dispatcher($responseWriter);
+echo $dispatcher->invoke($group, $from, $digits);
